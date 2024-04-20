@@ -1,7 +1,7 @@
 const CONFIG = {
 
-  NEXT_HOME_BANNER: false, // 首页是否显示大图及标语 [true,false]
-  NEXT_HOME_BANNER_STRINGS: ['葱葱人', '', 'Hi，我是一个干饭人', '欢迎来到我的博客🎉'], // 首页大图标语文字
+  NEXT_HOME_BANNER: [true,true], // 首页是否显示大图及标语 [true,false]
+  NEXT_HOME_BANNER_STRINGS: ['欢迎来到这个世界', '', 'Welcome to this world', 'ようこそこの世界'], // 首页大图标语文字
 
   NEXT_NAV_TYPE: 'normal', // ['fixed','autoCollapse','normal'] 分别是固定屏幕顶部并始终显示、固定屏幕顶部且滚动时隐藏，不固定屏幕顶部
 
@@ -16,7 +16,7 @@ const CONFIG = {
   NEXT_RIGHT_LATEST_POSTS: true, // 右侧栏最新文章
   NEXT_RIGHT_CATEGORY_LIST: true, // 右侧边栏文章分类列表
   NEXT_RIGHT_TAG_LIST: true, // 右侧边栏标签分类列表
-  NEXT_RIGHT_AD: false, // 右侧广告
+  NEXT_RIGHT_AD: true, // 右侧广告
 
   // 菜单
   NEXT_MENU_HOME: true, // 显示首页
