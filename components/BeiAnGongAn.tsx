@@ -1,6 +1,6 @@
 import { siteConfig } from '@/lib/config'
 import LazyImage from './LazyImage'
-import React from 'react'
+import type { FC, ReactElement } from 'react'
 
 interface BeiAnGongAnProps {
   className?: string
@@ -19,13 +19,12 @@ interface BeiAnGongAnProps {
  * @param {BeiAnGongAnProps} props - 组件属性
  * @returns {JSX.Element | null} 返回公安备案号组件或null
  */
-export const BeiAnGongAn: React.FC<BeiAnGongAnProps> = ({
+export const BeiAnGongAn: FC<BeiAnGongAnProps> = ({
   className = '',
   iconPath = '/images/gongan.png',
   iconSize = 15
-}: BeiAnGongAnProps): JSX.Element | null => {
+}: BeiAnGongAnProps): ReactElement | null => {
   const BEI_AN_GONGAN = siteConfig('BEI_AN_GONGAN') as string | null | undefined
-
   // 更精确的正则匹配，匹配类似"京公网安备11010502030143号"中的数字部分
   const codeMatch = BEI_AN_GONGAN && String(BEI_AN_GONGAN).match(/(\d+)号?$/)
   const code = codeMatch?.[1] ?? null

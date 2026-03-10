@@ -1,12 +1,15 @@
 import BLOG, { LAYOUT_MAPPINGS } from '@/blog.config'
 import * as ThemeComponents from '@theme-components'
-import getConfig from 'next/config'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { getQueryParam, getQueryVariable, isBrowser } from '../lib/utils'
 
-// 在next.config.js中扫描所有主题
-export const { THEMES = [] } = getConfig()?.publicRuntimeConfig || {}
+// Next 16 已移除 next/config，改用 next.config.js 注入的主题列表。
+const envThemes = (process.env.NEXT_PUBLIC_THEME_LIST || '')
+  .split(',')
+  .map(t => t.trim())
+  .filter(Boolean)
+export const THEMES = Array.from(new Set([BLOG.THEME, ...envThemes]))
 
 /**
  * 获取主题配置
