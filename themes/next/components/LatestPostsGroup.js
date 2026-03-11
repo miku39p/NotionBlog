@@ -34,6 +34,7 @@ const LatestPostsGroup = ({ latestPosts }) => {
             key={post.id}
             title={post.title}
             href={post?.href}
+            forceAnchor
             passHref
             className={'my-1 flex font-light'}>
             <div

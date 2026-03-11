@@ -3,8 +3,35 @@ import { siteConfig } from '@/lib/config'
 
 // 过滤 <a> 标签不能识别的 props
 const filterDOMProps = props => {
-  const { passHref, legacyBehavior, ...rest } = props
+  const { passHref, legacyBehavior, forceAnchor, ...rest } = props
   return rest
+}
+
+const toHrefString = href => {
+  if (typeof href === 'string') {
+    return href
+  }
+
+  if (
+    typeof href === 'object' &&
+    href !== null &&
+    typeof href.pathname === 'string'
+  ) {
+    const query = href.query
+      ? new URLSearchParams(
+        Object.entries(href.query).reduce((acc, [key, value]) => {
+          if (value !== undefined && value !== null) {
+            acc[key] = String(value)
+          }
+          return acc
+        }, {})
+      ).toString()
+      : ''
+
+    return query ? `${href.pathname}?${query}` : href.pathname
+  }
+
+  return ''
 }
 
 const SmartLink = ({ href, children, ...rest }) => {
@@ -13,17 +40,10 @@ const SmartLink = ({ href, children, ...rest }) => {
   // 获取 URL 字符串用于判断是否是外链
   let urlString = ''
 
-  if (typeof href === 'string') {
-    urlString = href
-  } else if (
-    typeof href === 'object' &&
-    href !== null &&
-    typeof href.pathname === 'string'
-  ) {
-    urlString = href.pathname
-  }
+  urlString = toHrefString(href)
 
   const isExternal = urlString.startsWith('http') && !urlString.startsWith(LINK)
+  const isForcedAnchor = Boolean(rest.forceAnchor)
 
   if (isExternal) {
     // 对于外部链接，必须是 string 类型
@@ -36,6 +56,14 @@ const SmartLink = ({ href, children, ...rest }) => {
         target='_blank'
         rel='noopener noreferrer'
         {...filterDOMProps(rest)}>
+        {children}
+      </a>
+    )
+  }
+
+  if (isForcedAnchor) {
+    return (
+      <a href={urlString} {...filterDOMProps(rest)}>
         {children}
       </a>
     )

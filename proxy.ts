@@ -9,7 +9,20 @@ import BLOG from './blog.config'
  */
 export const config = {
     // 这里设置白名单，防止静态资源被拦截
-    matcher: ['/((?!.*\\..*|_next|/sign-in|/auth).*)', '/', '/(api|trpc)(.*)']
+    matcher: ['/((?!.*\\..*|_next|/sign-in|/auth).*)', '/', '/(api|trpc)(.*)', '/_next/data/:path*']
+}
+
+const applyNextDataNoStoreHeaders = (req: NextRequest, response: NextResponse) => {
+    if (req.nextUrl.pathname.startsWith('/_next/data/')) {
+        response.headers.set(
+            'Cache-Control',
+            'no-store, no-cache, must-revalidate, proxy-revalidate'
+        )
+        response.headers.set('Pragma', 'no-cache')
+        response.headers.set('Expires', '0')
+        response.headers.set('Surrogate-Control', 'no-store')
+    }
+    return response
 }
 
 // 限制登录访问的路由
@@ -58,7 +71,7 @@ const noAuthMiddleware = async (req: NextRequest, ev: any) => {
             return NextResponse.redirect(redirectToUrl, 308)
         }
     }
-    return NextResponse.next()
+    return applyNextDataNoStoreHeaders(req, NextResponse.next())
 }
 /**
  * 鉴权中间件
@@ -87,7 +100,7 @@ const authMiddleware = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
         }
 
         // 默认继续处理请求
-        return NextResponse.next()
+        return applyNextDataNoStoreHeaders(req, NextResponse.next())
     })
     : noAuthMiddleware
 

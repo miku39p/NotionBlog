@@ -196,6 +196,17 @@ const nextConfig = {
     : () => {
       return [
         {
+          source: '/_next/data/:path*',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'no-store, no-cache, must-revalidate, proxy-revalidate'
+            },
+            { key: 'Pragma', value: 'no-cache' },
+            { key: 'Expires', value: '0' }
+          ]
+        },
+        {
           source: '/:path*{/}?',
           headers: [
             // 为了博客兼容性，不做过多安全限制

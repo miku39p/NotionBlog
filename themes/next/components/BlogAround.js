@@ -5,7 +5,7 @@ import SmartLink from '@/components/SmartLink'
  * @param {prev,next} param0
  * @returns
  */
-export default function BlogAround ({ prev, next }) {
+export default function BlogAround({ prev, next }) {
   if (!prev || !next) {
     return <></>
   }
@@ -13,6 +13,7 @@ export default function BlogAround ({ prev, next }) {
     <section className='text-gray-800 border-t dark:text-gray-300 flex flex-wrap lg:flex-nowrap lg:space-x-10 justify-between py-2'>
       {prev && <SmartLink
         href={`/${prev.slug}`}
+        forceAnchor
         passHref
         className='text-sm py-3 text-gray-500 hover:underline cursor-pointer'>
 
@@ -21,6 +22,7 @@ export default function BlogAround ({ prev, next }) {
       </SmartLink>}
       {next && <SmartLink
         href={`/${next.slug}`}
+        forceAnchor
         passHref
         className='text-sm flex py-3 text-gray-500 hover:underline cursor-pointer'>
         {next.title}

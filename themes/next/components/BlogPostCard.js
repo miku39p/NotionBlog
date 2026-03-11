@@ -35,6 +35,7 @@ const BlogPostCard = ({ post, index, showSummary }) => {
           <SmartLink
             {...aosProps}
             href={post?.href}
+            forceAnchor
             passHref
             className={`cursor-pointer text-3xl ${showPreview ? 'text-center' : ''} leading-tight text-gray-700 dark:text-gray-100 hover:text-blue-500 dark:hover:text-blue-400`}>
             {siteConfig('POST_TITLE_ICON') && (
@@ -105,6 +106,7 @@ const BlogPostCard = ({ post, index, showSummary }) => {
           <div className='text-right border-t pt-8 border-dashed'>
             <SmartLink
               href={post?.href}
+              forceAnchor
               className='hover:bg-opacity-100 hover:underline transform duration-300 p-3 text-white bg-gray-800 cursor-pointer'>
               {locale.COMMON.ARTICLE_DETAIL}
               <i className='ml-1 fas fa-angle-right' />
@@ -114,7 +116,7 @@ const BlogPostCard = ({ post, index, showSummary }) => {
 
         {siteConfig('NEXT_POST_LIST_COVER', null, CONFIG) &&
           post?.pageCoverThumbnail && (
-            <SmartLink href={post?.href} passHref>
+            <SmartLink href={post?.href} forceAnchor passHref>
               <div className='h-72 w-full relative duration-200 cursor-pointer transform overflow-hidden'>
                 <Image
                   className='hover:scale-105 transform duration-500'
