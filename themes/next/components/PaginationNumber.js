@@ -36,13 +36,11 @@ const PaginationNumber = ({ page, totalPage }) => {
               : `${pagePrefix}/page/${currentPage - 1}`,
           query: router.query.s ? { s: router.query.s } : {}
         }}
-        passHref
-        legacyBehavior>
+        passHref>
         <div
           rel='prev'
-          className={`${
-            currentPage === 1 ? 'invisible' : 'block'
-          } hover:border-t-2 border-white  hover:border-gray-400 dark:hover:border-gray-400 w-8 h-8 justify-center flex items-center cursor-pointer duration-200 transition-all hover:font-bold`}>
+          className={`${currentPage === 1 ? 'invisible' : 'block'
+            } hover:border-t-2 border-white  hover:border-gray-400 dark:hover:border-gray-400 w-8 h-8 justify-center flex items-center cursor-pointer duration-200 transition-all hover:font-bold`}>
           <i className='fas fa-angle-left' />
         </div>
       </SmartLink>
@@ -55,13 +53,11 @@ const PaginationNumber = ({ page, totalPage }) => {
           pathname: `${pagePrefix}/page/${currentPage + 1}`,
           query: router.query.s ? { s: router.query.s } : {}
         }}
-        passHref
-        legacyBehavior>
+        passHref>
         <div
           rel='next'
-          className={`${
-            +showNext ? 'block' : 'invisible'
-          } hover:border-t-2 border-white  hover:border-gray-400 dark:hover:border-gray-400 w-8 h-8 justify-center flex items-center cursor-pointer duration-200 transition-all hover:font-bold`}>
+          className={`${+showNext ? 'block' : 'invisible'
+            } hover:border-t-2 border-white  hover:border-gray-400 dark:hover:border-gray-400 w-8 h-8 justify-center flex items-center cursor-pointer duration-200 transition-all hover:font-bold`}>
           <i className='fas fa-angle-right' />
         </div>
       </SmartLink>

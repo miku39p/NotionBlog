@@ -4,7 +4,7 @@ import SmartLink from '@/components/SmartLink'
 const Logo = props => {
   const { className } = props
   return (
-    <SmartLink href='/' passHref legacyBehavior>
+    <SmartLink href='/'>
       <div
         className={
           'flex flex-col justify-center items-center cursor-pointer bg-black dark:bg-gray-800 space-y-3 font-bold ' +

@@ -16,8 +16,7 @@ const CategoryList = ({ currentCategory, categoryOptions }) => {
           <SmartLink
             key={category.name}
             href={`/category/${category.name}`}
-            passHref
-            legacyBehavior>
+            passHref>
             <li
               className={`cursor-pointer border rounded-xl duration-200 mr-1 my-1 px-2 py-1 font-light text-sm whitespace-nowrap dark:text-gray-300 
                    ${selected
@@ -25,10 +24,8 @@ const CategoryList = ({ currentCategory, categoryOptions }) => {
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-700 dark:bg-gray-600 dark:border-gray-600'
                 }`}
             >
-              <a>
-              <i className={`${selected ? 'fa-folder-open ' : 'fa-folder '} fas mr-1`}/>
-                {`${category.name} (${category.count})`}
-              </a>
+              <i className={`${selected ? 'fa-folder-open ' : 'fa-folder '} fas mr-1`} />
+              {`${category.name} (${category.count})`}
             </li>
           </SmartLink>
         )

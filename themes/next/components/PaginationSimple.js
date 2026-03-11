@@ -17,11 +17,11 @@ const PaginationSimple = ({ page, showNext }) => {
 
   return (
     <div
-        data-aos="fade-down"
-        data-aos-duration="300"
-        data-aos-once="false"
-        data-aos-anchor-placement="top-bottom"
-        className="my-10 flex justify-between font-medium text-black dark:text-gray-100 space-x-2">
+      data-aos="fade-down"
+      data-aos-duration="300"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-bottom"
+      className="my-10 flex justify-between font-medium text-black dark:text-gray-100 space-x-2">
       <SmartLink
         href={{
           pathname:
@@ -30,13 +30,11 @@ const PaginationSimple = ({ page, showNext }) => {
               : `${pagePrefix}/page/${currentPage - 1}`,
           query: router.query.s ? { s: router.query.s } : {}
         }}
-        passHref
-        legacyBehavior>
+        passHref>
         <button
           rel="prev"
-          className={`${
-            currentPage === 1 ? 'invisible' : 'block'
-          } w-full duration-200 px-4 py-2 hover:border-black border-b-2 hover:font-bold`}
+          className={`${currentPage === 1 ? 'invisible' : 'block'
+            } w-full duration-200 px-4 py-2 hover:border-black border-b-2 hover:font-bold`}
         >
           ← {locale.PAGINATION.PREV}
         </button>
@@ -46,13 +44,11 @@ const PaginationSimple = ({ page, showNext }) => {
           pathname: `/page/${currentPage + 1}`,
           query: router.query.s ? { s: router.query.s } : {}
         }}
-        passHref
-        legacyBehavior>
+        passHref>
         <button
           rel="next"
-          className={`${
-            +showNext ? 'block' : 'invisible'
-          } w-full duration-200 px-4 py-2 hover:border-black border-b-2 hover:font-bold`}
+          className={`${+showNext ? 'block' : 'invisible'
+            } w-full duration-200 px-4 py-2 hover:border-black border-b-2 hover:font-bold`}
         >
           {locale.PAGINATION.NEXT} →
         </button>

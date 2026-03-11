@@ -18,11 +18,11 @@ const BlogPostCard = ({ post, index, showSummary }) => {
   const aosProps =
     index > 2
       ? {
-          'data-aos': 'fade-down',
-          'data-aos-duration': '400',
-          'data-aos-once': 'true',
-          'data-aos-anchor-placement': 'top-bottom'
-        }
+        'data-aos': 'fade-down',
+        'data-aos-duration': '400',
+        'data-aos-once': 'true',
+        'data-aos-anchor-placement': 'top-bottom'
+      }
       : {}
 
   return (
@@ -114,14 +114,14 @@ const BlogPostCard = ({ post, index, showSummary }) => {
 
         {siteConfig('NEXT_POST_LIST_COVER', null, CONFIG) &&
           post?.pageCoverThumbnail && (
-            <SmartLink href={post?.href} passHref legacyBehavior>
+            <SmartLink href={post?.href} passHref>
               <div className='h-72 w-full relative duration-200 cursor-pointer transform overflow-hidden'>
                 <Image
                   className='hover:scale-105 transform duration-500'
                   src={post?.pageCoverThumbnail}
                   alt={post.title}
-                  layout='fill'
-                  objectFit='cover'
+                  fill
+                  style={{ objectFit: 'cover' }}
                   loading='lazy'
                 />
               </div>

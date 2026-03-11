@@ -371,8 +371,7 @@ const LayoutCategoryIndex = props => {
               <SmartLink
                 key={category.name}
                 href={`/category/${category.name}`}
-                passHref
-                legacyBehavior>
+                passHref>
                 <div
                   className={
                     'hover:text-black dark:hover:text-white dark:text-gray-300 dark:hover:bg-gray-600 px-5 cursor-pointer py-2 hover:bg-gray-100'
