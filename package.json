@@ -1,6 +1,7 @@
 {
   "name": "notion-next",
   "version": "4.9.3.1",
+  "private": true,
   "homepage": "https://github.com/tangly1024/NotionNext.git",
   "license": "MIT",
   "repository": {
@@ -71,6 +72,8 @@
     "react-tweet-embed": "~2.0.0"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.29.2",
+    "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
